@@ -1,14 +1,14 @@
 const mongoose = require('../db/conn')
-const {schema} = mongoose
+const {Schema} = mongoose
 
 const Image = mongoose.model(
     'Image',
-    new schema({
+    new Schema({
     title: {
         type: String,
         required: true,
     },
-    discription: {
+    description: {
         type: String,
         required: true,
     },
