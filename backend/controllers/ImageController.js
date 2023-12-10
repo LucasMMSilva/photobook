@@ -1,6 +1,6 @@
 const Image = require('../models/Image')
 
-const insertImage = async(req,res)=>{
+const InsertImage = async(req,res)=>{
     const {title,description} = req.body
     const images = req.files
     const newImages = await Image.create({
@@ -14,4 +14,4 @@ const insertImage = async(req,res)=>{
     }
     res.status(201).json(newImages)
 }
-module.exports={insertImage}
+module.exports={InsertImage}
