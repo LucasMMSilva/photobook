@@ -14,4 +14,12 @@ const InsertImage = async(req,res)=>{
     }
     res.status(201).json(newImages)
 }
-module.exports={InsertImage}
+const getAllImages = async(req,res)=>{
+    const images = Image.find()
+    if(!images){
+        res.status(422).json({msg:'Nenhuma imagem foi encontrada!'})
+        return
+    }
+    res.status(201).json(images)
+}
+module.exports={InsertImage,getAllImages}
