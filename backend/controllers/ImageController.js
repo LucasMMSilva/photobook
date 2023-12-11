@@ -26,4 +26,14 @@ const getAllImages = async(req,res)=>{
     }
     res.status(201).json(images)
 }
-module.exports={InsertImage,getAllImages}
+const getImageById = async(req,res)=>{
+    const {id} = req.params
+
+    const image = await Image.findById(id)
+    if(!image){
+        res.status(422).json({msg:'Nenhuma imagem foi encontrada!'})
+        return
+    }
+    res.status(200).json(image)  
+}
+module.exports={InsertImage,getAllImages,getImageById}
