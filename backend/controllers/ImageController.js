@@ -36,4 +36,20 @@ const getImageById = async(req,res)=>{
     }
     res.status(200).json(image)  
 }
-module.exports={InsertImage,getAllImages,getImageById}
+const deleteImageById = async(req,res)=>{
+    const {id} = req.params
+    const image = await Image.findById(id)
+    if(!image){
+        res.status(422).json({msg:'Não foi possivel apagar imagem.'})
+        return
+    }
+    try{
+        await Image.deleteOne({_id:image._id})
+    }catch(err){
+        res.status(422).json({msg:'Não foi possivel apagar imagem.'})
+        return
+    }
+    res.status(200).json({msg:"Imagem apagada com sucesso."})
+    
+}
+module.exports={InsertImage,getAllImages,getImageById,deleteImageById}
