@@ -1,4 +1,24 @@
+const fs = require('fs')
+const path = require('path')
+
 const Image = require('../models/Image')
+
+function removeImages (e){
+
+    /*fs.unlink(path.join('public/images/1702331700399.jpg'),(err)=>{
+        console.log(err)
+    })*/
+
+    e.forEach(element => {
+        fs.unlink(element.path,(err)=>{
+            if(err){
+                console.log(element.filename + ' não foi encontrado!')
+            }
+            
+        })
+    });
+
+}
 
 const InsertImage = async(req,res)=>{
     const {title,description} = req.body
@@ -49,6 +69,7 @@ const deleteImageById = async(req,res)=>{
         res.status(422).json({msg:'Não foi possivel apagar imagem.'})
         return
     }
+    removeImages(image.images)
     res.status(200).json({msg:"Imagem apagada com sucesso."})
     
 }
