@@ -1,21 +1,34 @@
 import {useState,useEffect} from 'react'
+import ImagePreview from '../../components/ImagePreview/ImagePreview'
+import './Home.css'
 const Home = () => {
     const [images,setImages] = useState([])
     
     useEffect(()=>{
-        const getImages = async()=>{
-            const responseImages = await fetch('http://localhost:5000/')
-            const images = responseImages.json()
-            
-            console.log(images[0])
+        if(images.length === 0){
+            const getImages = async()=>{
+              await fetch('http://localhost:5000/',{
+                method:'GET',
+                headers:{
+                  'Content-Type':'application/json'
+                }
+              }).then((res)=>res.json()).then((data)=>{
+                setImages(data)
+              })
+          }
+          getImages()
         }
-        getImages()
-    },[])
+       
+        
+    },[images])
 
-    
   return (
-    <div>
-
+    <div className='images'> 
+      {images && (
+        images.map((image)=>(
+          <ImagePreview src={'http://localhost:5000/images/'+image.images[0].filename} title={image.title}/>
+        ))
+      )}
     </div>
   )
 }

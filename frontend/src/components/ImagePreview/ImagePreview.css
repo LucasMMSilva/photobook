@@ -1,0 +1,9 @@
+div.imagePreview{
+    display: inline;
+    padding: 5px;
+}
+div.imagePreview img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
