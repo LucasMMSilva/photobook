@@ -1,0 +1,31 @@
+div.bgf{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Ajuste a cor de fundo conforme necessário */
+    z-index: 90;
+    padding-top: 20px;
+}
+div.container-image-view{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    max-width: 1080px;
+    margin: 0 auto;
+    background-color: rgba(219, 219, 170, 0.19);
+}
+div.image-view{
+    background-color: #fff;
+    width:90%;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+}
+div.description{
+    color: #fff;
+}
+div.description p{
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: .95em;
+}

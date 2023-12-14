@@ -27,11 +27,7 @@ const InsertImage = async(req,res)=>{
     res.status(201).json(newImages)
 }
 const getAllImages = async(req,res)=>{
-    const images = await Image.find().select({
-        title: 1,
-        description: 1,
-        images: { $slice: 1 }
-      })
+    const images = await Image.find()
     if(!images){
         res.status(422).json({msg:'Nenhuma imagem foi encontrada!'})
         return
