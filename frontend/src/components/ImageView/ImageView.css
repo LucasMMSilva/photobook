@@ -6,7 +6,7 @@ div.bgf{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8); /* Ajuste a cor de fundo conforme necessário */
     z-index: 90;
-    padding-top: 20px;
+    padding-top: 30px;
 }
 div.container-image-view{
     display: grid;
@@ -20,6 +20,31 @@ div.image-view{
     width:90%;
     margin: 0 auto;
     aspect-ratio: 1/1;
+    border-radius: 10px;
+}
+div.image-content{
+    display: grid;
+    grid-template-columns: 1fr 30px;
+}
+div.image-icons{
+    text-align: center;
+}
+div.image-icons svg{
+    width: 100%;
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+div.image-icons svg:first-child{
+    width: 100%;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+div.image-icons svg path{
+    width: 100%;
+    
+    text-align: center;
+    color: #fff;
+    margin: 0 auto;
 }
 div.description{
     color: #fff;
