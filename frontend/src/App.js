@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Home from './pages/Home/Home'
-import UploadImage from './pages/UploadImage/UploadImage';
+import ImageUpload from './pages/ImageUpload/ImageUpload';
 function App() {
   return (
     <div className="App">
@@ -12,7 +12,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/upload' element={<UploadImage/>}/>
+            <Route path='/upload' element={<ImageUpload/>}/>
           </Routes>
         </BrowserRouter>
       </div>

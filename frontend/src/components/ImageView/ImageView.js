@@ -1,20 +1,27 @@
-import React from 'react'
+import {useEffect,useState} from 'react'
 import './ImageView.css'
 import { AiOutlineClose } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
-const ImageView = () => {
+const ImageView = (props) => {
+    const images = props.images
+    let imageURL = {backgroundImage: `url(imagenotfound.png)`,}
+    useEffect(()=>{
+        imageURL = {backgroundImage: `url(http://localhost:5000/images/${images.images[0].filename})`,}
+    },[images])
+    console.log(images)
+
   return (
     <div className='bgf'>
-        <div className="container-image-view">
-            <div className="image-view">
+        {images && (<div className="container-image-view">
+            <div className="image-view"  style={imageURL}>
 
             </div>
             <div className="image-content">
                 <div className="description">
-                    <h3>Este é o titulo imagem</h3>
-                    <p>Esta aqui é uma paquena descrição da imagem, para dar enfaze em alguma coisa ou sei lá o que.</p>
+                    <h3>{images.title}</h3>
+                    <p>{images.description}</p>
                 </div>
                 <div className='image-icons'>
                     <AiOutlineClose />
@@ -23,7 +30,7 @@ const ImageView = () => {
                 </div>
             </div>
             
-        </div>
+        </div>)}
     </div>
   )
 }

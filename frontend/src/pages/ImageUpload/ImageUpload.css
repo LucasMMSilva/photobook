@@ -1,0 +1,20 @@
+div.form-container form{
+    display: block;
+   max-width: 700px;
+   margin: 0 auto;
+   margin-top: 50px;
+}
+div.form-container form label,div.form-container form input{
+    display: block;
+    width: 100%;
+}
+div.form-container form label{
+    font-size: .9em;
+    margin-top: 15px;
+    margin-bottom: 1px;
+}
+div.form-container form input[type='text']{
+    border-radius: 15px;
+    border: gray 1px solid;
+    padding: 10px 15px;
+}

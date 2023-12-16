@@ -21,6 +21,9 @@ div.image-view{
     margin: 0 auto;
     aspect-ratio: 1/1;
     border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 div.image-content{
     display: grid;
