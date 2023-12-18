@@ -5,7 +5,7 @@ const Navbar = () => {
     <nav>
         <img src="/logopb.png" alt="Logo Photobook"/>
         <div>
-            <button>Enviar Imagem</button>
+            <a href='http://localhost:3000/upload'>Enviar Imagem</a>
         </div>
     </nav>
   )
