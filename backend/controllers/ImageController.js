@@ -20,8 +20,22 @@ const InsertImage = async(req,res)=>{
         description,
         images
     })
+    
+    if(!title){
+        res.status(422).json({msg:'Titulo é obrigatorio.',type:'title'})
+        return
+    }
+    if(!description){
+        res.status(422).json({msg:'Descrição é obrigatoria.',type:'description'})
+        return
+    }
+    if(!images){
+        res.status(422).json({msg:'Imagem é obrigatoria.',type:'image'})
+        return
+    }
+
     if(!newImages){
-        res.status(422).json({msg:'Algo de errado aconteceu!'})
+        res.status(422).json({msg:'Algo de errado aconteceu!', type:'System'})
         return
     }
     res.status(201).json(newImages)
@@ -67,24 +81,21 @@ const imageUpdateById = async (req,res)=>{
     let updateData = {}
     
     const image = await Image.findById(id)
-    if(!image){
-        res.status(422).json({msg:'Imagem não existe'})
-        return
-    }
+   
     if(!title){
-        res.status(422).json({msg:'Titulo é obrigatorio.',type:'TITLE NULL'})
+        res.status(422).json({msg:'Titulo é obrigatorio.',type:'title'})
         return
     }else(
         updateData.title = title
     )
     if(!description){
-        res.status(422).json({msg:'Descrição é obrigatoria.',type:'DESCRIPTION NULL'})
+        res.status(422).json({msg:'Descrição é obrigatoria.',type:'description'})
         return
     }else(
         updateData.description = description
     )
     if(!images){
-        res.status(422).json({msg:'Imagem é obrigatoria.',type:'IMAGE NULL'})
+        res.status(422).json({msg:'Imagem é obrigatoria.',type:'image'})
         return
     }else{
         updateData.images = []

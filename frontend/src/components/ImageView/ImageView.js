@@ -1,11 +1,12 @@
 import {useEffect,useState} from 'react'
-import { useParams , Link} from 'react-router-dom';
+import { useParams , Link, useNavigate} from 'react-router-dom';
 import './ImageView.css'
 import { AiOutlineClose } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { IoIosArrowDropleftCircle,IoIosArrowDroprightCircle  } from "react-icons/io";
 const ImageView = () => {
+    const navigate = useNavigate()
     const {id} = useParams()
     const [image,setImage] = useState([])
     const [imageURL,setImageURL] = useState({backgroundImage: 'url(/imagenotfound.png)'})
@@ -36,6 +37,17 @@ const ImageView = () => {
             setCountImage(countImage +1)     
         }
     }
+
+    const deleteImage = async()=>{
+        await fetch(`http://localhost:5000/delete/${id}`,{
+            method:'DELETE',
+            headers:{
+              'Content-Type':'application/json'
+            }
+          }).then((res)=>res.json()).then((data)=>{
+            navigate('/')
+          })
+    }
   return (
     <div className='bgf'>
         {image && (<div className="container-image-view">
@@ -64,7 +76,8 @@ const ImageView = () => {
                     <Link to={'/'}><AiOutlineClose /></Link>
                     
                     <FiEdit />
-                    <RiDeleteBin5Line />
+
+                    <RiDeleteBin5Line onClick={deleteImage} />
                 </div>
             </div>
             

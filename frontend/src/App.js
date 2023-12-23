@@ -8,16 +8,19 @@ import ImageView from './components/ImageView/ImageView';
 function App() {
   return (
     <div className="App">
-      <Navbar/>
-      <div className="container">
+      
+     
         <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home/>}/>
-            <Route path='/upload' element={<ImageUpload/>}/>
-            <Route path='/image/:id' element={<ImageView/>}/>
-          </Routes>
+          <Navbar/>
+          <div className="container">
+            <Routes>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/upload' element={<ImageUpload/>}/>
+              <Route path='/image/:id' element={<ImageView/>}/>
+            </Routes>
+          </div>
         </BrowserRouter>
-      </div>
+      
       
     </div>
   );
