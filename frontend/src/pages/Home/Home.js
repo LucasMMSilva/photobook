@@ -8,7 +8,7 @@ const Home = () => {
     useEffect(()=>{
         if(images.length === 0){
           const getImages = async()=>{
-            await fetch('http://localhost:5000/',{
+            await fetch('http://127.0.0.1:5000/',{
               method:'GET',
               headers:{
                 'Content-Type':'application/json'
@@ -28,7 +28,7 @@ const Home = () => {
       <div className='images'> 
         {images && (
           images.map((image)=>(
-            <ImagePreview key={image._id} id={image._id} src={'http://localhost:5000/images/'+image.images[0].filename} title={image.title} images={image.images}/>
+            <ImagePreview key={image._id} id={image._id} src={'http://localhost:5000/images/'+image.images[0]} title={image.title} images={image.images}/>
           ))
         )}
       </div>

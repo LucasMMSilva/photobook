@@ -73,3 +73,6 @@ div.view div.button-container button.btn-left{
 div.view div.button-container button.btn-right{
     text-align: left;
 }
+div.image-icons svg{
+    cursor: pointer;
+}

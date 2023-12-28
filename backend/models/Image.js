@@ -15,7 +15,8 @@ const Image = mongoose.model(
     images: {
         type: Array,
         required: true,
-    }
+    },
+    date: { type: Date, default: Date.now },
 }))
 
 module.exports = Image;

@@ -18,7 +18,7 @@ const ImageView = () => {
                 await fetch(`http://localhost:5000/${id}`).then((res)=>res.json()).then((data)=>{
                   data.imgLength = data.images.length
                   setImage(data)
-                  setImageURL({backgroundImage: `url(http://localhost:5000/images/${data.images[0].filename})`})
+                  setImageURL({backgroundImage: `url(http://localhost:5000/images/${data.images[0]})`})
                 }).catch((err)=>console.log(err))
               }
               getImages()
@@ -27,13 +27,13 @@ const ImageView = () => {
     
     const backImage = () =>{
         if(countImage > 0){
-            setImageURL({backgroundImage: `url(http://localhost:5000/images/${image.images[countImage-1].filename})`})
+            setImageURL({backgroundImage: `url(http://localhost:5000/images/${image.images[countImage-1]})`})
             setCountImage(countImage -1)
         }
     }
     const nextImage = () =>{
         if(countImage < image.images.length-1){
-            setImageURL({backgroundImage: `url(http://localhost:5000/images/${image.images[countImage+1].filename})`})
+            setImageURL({backgroundImage: `url(http://localhost:5000/images/${image.images[countImage+1]})`})
             setCountImage(countImage +1)     
         }
     }
