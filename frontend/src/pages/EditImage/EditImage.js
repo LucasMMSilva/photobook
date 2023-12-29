@@ -1,14 +1,33 @@
 import React, { useState,useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './ImageUpload.css'
-const ImageUpload = () => {
+import { useNavigate, useParams } from 'react-router-dom'
+import './EditImage.css'
+const EditImage = () => {
+  const [imageURL,setImageURL] = useState({backgroundImage: 'url(/imagenotfound.png)'})
   const [msg,setMsg] = useState({msg:'',type:''})
   const [title,setTitle] = useState()
   const [description,setDescription] = useState()
   const [images,setImages] = useState()
   const navigate = useNavigate()
 
+  const {id} = useParams()
+  const [image,setImage] = useState([])
+
+  useEffect(()=>{
+    if(image.length===0){
+        const getImages = async()=>{
+            await fetch(`http://localhost:5000/${id}`).then((res)=>res.json()).then((data)=>{
+              data.imgLength = data.images.length
+              setImage(data)
+              setImageURL({backgroundImage: `url(http://localhost:5000/images/${data.images[0]})`})
+            }).catch((err)=>console.log(err))
+          }
+          getImages()
+    }
+  },[image])
+
+
   const uploadImage =async(e)=>{
+    
     e.preventDefault()
     if(images.length>0){
 
@@ -32,7 +51,6 @@ const ImageUpload = () => {
       })
 
     }
-    
   }
 
   return (
@@ -57,8 +75,24 @@ const ImageUpload = () => {
               </div>
             )}
 
+            <div className="tumblist">
+              {image.imgLength > 0 ? image.images.map((img)=>{
+              const myImage = {backgroundImage: `url(http://localhost:5000/images/${img})`}
+              return(
+                <div className="tumbnails" style={myImage}  key={img}/>
+              )}) :(
+                <div className="noTumbnails">
+
+                </div>
+              )}
+              
+            </div>
+            
+
+           
+
             <label htmlFor="">Enviar imagens</label>
-            <input type="file" name="" id="" multiple onChange={(e)=>setImages(e.target.files)}/>
+            <input type="file" multiple onChange={(e)=>setImages(e.target.files)} accept=".png, .jpg, .jpeg" />
 
             {msg.type === 'image' && (
               <div className="message-erro">
@@ -66,11 +100,11 @@ const ImageUpload = () => {
               </div>
             )}
 
-            <button type="submit">Enviar Imagem</button>
+            <button type="submit">Editar Imagem</button>
 
         </form>
     </div>
   )
 }
 
-export default ImageUpload
+export default EditImage
