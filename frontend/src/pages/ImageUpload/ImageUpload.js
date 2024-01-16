@@ -27,7 +27,7 @@ const ImageUpload = () => {
         body: formData 
       }).then((data) => data.json()).then((data)=>{
         console.log(data)
-        navigate(`/${data._id}`)
+        navigate(`/image/${data._id}`)
       }).catch((err)=>{
         setMsg(err)
         console.log(err)
