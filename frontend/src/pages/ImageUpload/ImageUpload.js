@@ -17,23 +17,27 @@ const ImageUpload = () => {
       formData.append('description',description)
 
       for(let i = 0; i < images.length; i++){
-        
-        formData.append('images',images[i])
+        formData.append('images[]',images[i].name)
       } 
       
       await fetch('http://localhost:5000/insertImage',{
         method:'POST',
         mode: 'cors',
+        headers: { 'Content-Type': 'multipart/form-data' },
         body: formData 
       }).then((data) => data.json()).then((data)=>{
-        navigate(`/image/${data._id}`)
+        console.log(data)
+        navigate(`/${data._id}`)
       }).catch((err)=>{
         setMsg(err)
+        console.log(err)
       })
+      console.log(images.length)
 
     }
     
   }
+
 
   return (
     <div className='form-container'>

@@ -37,16 +37,16 @@ margin-top: 2px;
 }
 div.tumblist{
     display: flex;
-    margin-top: 10px;
-    margin-bottom: -10px;
 }
 div.tumbnails {
-    display: inline;
-    width: 70px; 
-    height: 70px;
+    display: inline-flex;
+    position: relative;
+    width: 85px; 
+    height: 85px;
     margin-right: 5px;
     border-radius: 10px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    justify-items: right;
 }

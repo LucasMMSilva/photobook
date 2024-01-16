@@ -4,7 +4,6 @@ import Navbar from './components/Navbar/Navbar';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import Home from './pages/Home/Home'
 import ImageUpload from './pages/ImageUpload/ImageUpload';
-import EditImage from './pages/EditImage/EditImage';
 import ImageView from './components/ImageView/ImageView';
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
             <Routes>
               <Route path='/' element={<Home/>}/>
               <Route path='/upload' element={<ImageUpload/>}/>
-              <Route path='/edit/:id' element={<EditImage/>}/>
               <Route path='/image/:id' element={<ImageView/>}/>
             </Routes>
           </div>

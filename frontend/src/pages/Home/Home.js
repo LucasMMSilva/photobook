@@ -27,9 +27,11 @@ const Home = () => {
     <>
       <div className='images'> 
         {images && (
-          images.map((image)=>(
-            <ImagePreview key={image._id} id={image._id} src={'http://localhost:5000/images/'+image.images[0]} title={image.title} images={image.images}/>
-          ))
+          images.map((image)=>{ image.images > 0 && 
+            (
+              <ImagePreview key={image._id} id={image._id} src={'http://localhost:5000/images/'+image.images[0].filename} title={image.title} images={image.images}/>
+            )
+          })
         )}
       </div>
   </>

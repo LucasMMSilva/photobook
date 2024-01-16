@@ -15,7 +15,11 @@ function removeImages (e){
 const InsertImage = async(req,res)=>{
     const {title,description} = req.body
     const images = req.files
-    
+    const newImages = await Image.create({
+        title,
+        description,
+        images
+    })
     
     if(!title){
         res.status(422).json({msg:'Titulo é obrigatorio.',type:'title'})
@@ -30,24 +34,11 @@ const InsertImage = async(req,res)=>{
         return
     }
 
-    
-    const image = new Image({
-        title,
-        description,
-        images: []
-    })
-
-    images.map((img)=>{
-        image.images.push(img.filename)
-    })
-
-    const newImage = await image.save()
-
-    if(!newImage){
+    if(!newImages){
         res.status(422).json({msg:'Algo de errado aconteceu!', type:'System'})
         return
     }
-    res.status(201).json(newImage)
+    res.status(201).json(newImages)
 }
 const getAllImages = async(req,res)=>{
     const images = await Image.find().sort({date:'desc'})
