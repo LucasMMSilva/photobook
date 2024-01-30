@@ -1,0 +1,19 @@
+.navbar{
+    display: flex;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.250);
+}
+.navbar div{
+    padding: 6px 0;
+    display: flex;
+    width: 1180px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar div a{
+    padding: 4px 20px 8px;
+    background-color: rgb(214, 214, 214);
+    color: black;
+    text-decoration: none;
+    border-radius: 5px;
+}
