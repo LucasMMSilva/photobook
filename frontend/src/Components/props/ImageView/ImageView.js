@@ -5,6 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { FiEdit } from "react-icons/fi";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { IoIosArrowDropleftCircle,IoIosArrowDroprightCircle  } from "react-icons/io";
+import api from '../../../hooks/api'
 const ImageView = () => {
     const navigate = useNavigate()
     const {id} = useParams()
@@ -15,7 +16,7 @@ const ImageView = () => {
     useEffect(()=>{
         if(image.length===0){
             const getImages = async()=>{
-                await fetch(`http://localhost:5000/${id}`).then((res)=>res.json()).then((data)=>{
+                await api.get(`/${id}`).then((data)=>{
                   data.imgLength = data.images.length
                   setImage(data)
                   setImageURL({backgroundImage: `url(http://localhost:5000/images/${data.images[0].filename})`})
