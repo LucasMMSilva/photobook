@@ -16,11 +16,13 @@ const ImageView = () => {
     useEffect(()=>{
         if(image.length===0){
             const getImages = async()=>{
-                await api.get(`/${id}`).then((data)=>{
-                  data.imgLength = data.images.length
-                  setImage(data)
-                  setImageURL({backgroundImage: `url(http://localhost:5000/images/${data.images[0].filename})`})
-                }).catch((err)=>console.log(err))
+                await api.get(`/${id}`)
+                .then((response)=>{
+                  response.data.imgLength = response.data.images.length
+                  setImage(response.data)
+                  setImageURL({backgroundImage: `url(http://localhost:5000/images/${response.data.images[0].filename})`})
+                })
+                .catch((err)=>console.log(err))
               }
               getImages()
         }

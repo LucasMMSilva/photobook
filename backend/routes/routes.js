@@ -12,7 +12,7 @@ const {uploadImage} = require('../utils/uploadImage')
 
 router.get('/',getAllImages)
 router.get('/:id',getImageById)
-router.post('/insertImage',uploadImage.array('images[]'),InsertImage)
+router.post('/insertImage',uploadImage.array('images'),InsertImage)
 router.put('/edit/:id',uploadImage.array('images'),imageUpdateById)
 router.delete('/delete/:id',deleteImageById)
 
